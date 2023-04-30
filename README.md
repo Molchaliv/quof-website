@@ -9,6 +9,8 @@ To download, you must log in or use an `API` key. `API` key can be obtained only
 The download will download the latest version of the software, but you can also download any other version:
 
 `/download/<version>`
+Or
+`/api/<api_key>/download/<version>`
 
 ![Main page screenshot](https://raw.githubusercontent.com/Molchaliv/quof-website/main/screenshots/index-page-screenshot.png)
 
