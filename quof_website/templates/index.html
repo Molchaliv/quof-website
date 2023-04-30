@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+         <meta charset="UTF-8">
+         <link rel="stylesheet" href="{{ url_for('static', filename='/styles/index.css') }}">
+         <title>Quof</title>
+    </head>
+    <body>
+        <header>
+            <a href="{{ url_for('main.index') }}">
+                <img class="header-logo" width="48" height="48" src="{{ url_for('static', filename='/images/logo.png') }}" alt="logo" />
+            </a>
+
+            <div class="navigation-bar">
+                <ul class="navigation-links">
+                    <li class="nav-link"><a href="{{ url_for('main.index') }}">Home</a></li>
+                    <li class="nav-link"><a href="{{ url_for('api.show_api_key') }}">Api</a></li>
+                    <li class="nav-link"><a href="{{ url_for('main.docs') }}">Docs</a></li>
+                    {% if current_user.is_authenticated %}
+                    <li class="nav-link"><a onclick="menu_toggle();">Profile</a></li>
+                    {% endif %}
+                    {% if not current_user.is_authenticated %}
+                    <li class="nav-link sign-in"><a href="{{ url_for('auth.login') }}">Sign In</a></li>
+                    {% endif %}
+                    {% if not current_user.is_authenticated %}
+                    <li class="nav-link sign-up"><a href="{{ url_for('auth.signup') }}">Sign Up</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </header>
+
+        <div class="main-data" id="main-content">
+            <div class="download">
+                <h1>Best text editor<br>for you!</h1>
+                <button onclick="location.href='{{ url_for('main.download') }}'" type="button">Download Now!</button>
+            </div>
+
+            <img class="screenshot" width="65%" height="65%" src="{{ url_for('static', filename='/images/screenshot.png') }}" />
+        </div>
+
+        <div class="menu">
+            <img class="avatar" width="64px" height="64px" src="{{ avatar_path }}" />
+
+            <h3>Welcome, {{ name }}!</h3>
+
+            <!--
+            <ul class="menu-bar">
+                {% if email == admin_email %}
+                <li class="menu-link post-create"><a href="#">Create post</a></li>
+                {% endif %}
+                <li class="menu-link"><a href="/logout">Logout</a></li>
+                <li class="menu-link"><a href="/delete">Delete</a></li>
+            </ul>
+            -->
+            {% if email == admin_email %}
+            <button class="create-post" onclick="location.href='{{ url_for('main.create_doc') }}'" type="button">Create documentation</button>
+            {% endif %}
+            <div class="danger-buttons">
+                <button class="logout-profile" onclick="location.href='{{ url_for('auth.logout') }}'" type="button">Logout</button>
+                <button class="delete-profile" onclick="location.href='{{ url_for('auth.delete') }}'" type="button">Delete profile</button>
+            </div>
+        </div>
+
+        <script>
+            function menu_toggle() {
+                const toggle_menu = document.querySelector('.menu');
+                toggle_menu.classList.toggle('active')
+            }
+        </script>
+    </body>
+</html>

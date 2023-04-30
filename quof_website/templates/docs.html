@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='/styles/docs.css') }}">
+        <title>Quof - Docs</title>
+    </head>
+    <body>
+        <header>
+            <a href="{{ url_for('main.index') }}">
+                <img class="header-logo" width="48" height="48" src="{{ url_for('static', filename='/images/logo.png') }}" alt="logo" />
+            </a>
+        </header>
+
+        <div class="base-container" id="main-content">
+            {% for current_documentation in documentations %}
+                <div class="line-container">
+                    {% for doc_title, doc_info, doc_link in current_documentation %}
+                        <div class="container" onclick="location.href='{{ doc_link }}'">
+                            <h1>{{ doc_title }}</h1>
+                            <p>{{ doc_info }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    </body>
+</html>

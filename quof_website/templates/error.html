@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='/styles/error.css') }}">
+        <title>Quof - Oops</title>
+    </head>
+    <body>
+        <header>
+            <a href="{{ url_for('main.index') }}">
+                <img class="header-logo" width="48" height="48" src="{{ url_for('static', filename='/images/logo.png') }}" alt="logo" />
+            </a>
+        </header>
+
+        <form>
+            <div class="container">
+                <h1>Oops! Something went wrong!</h1>
+                <button onclick="location.href='{{ url_for('main.index') }}'" type="button">Return to main page</button>
+            </div>
+        </form>
+    </body>
+</html>

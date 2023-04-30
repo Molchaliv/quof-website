@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='/styles/api.css') }}">
+        <title>Quof - Api</title>
+    </head>
+    <body>
+        <header>
+            <a href="{{ url_for('main.index') }}">
+                <img class="header-logo" width="48" height="48" src="{{ url_for('static', filename='/images/logo.png') }}" alt="logo" />
+            </a>
+        </header>
+
+        <form>
+            <div class="container">
+                <h1>Use your key to access our tools.</h1>
+                {% if api_key != "" %}
+                    <h1>Your api key:<br>{{ api_key }}</h1>
+                {% endif %}
+                {% if api_key == "" %}
+                    <h1>Register or login to get api key.</h1>
+                    <button onclick="location.href='{{ url_for('auth.signup') }}'" type="button">Sign Up</button>
+                {% endif %}
+            </div>
+        </form>
+    </body>
+</html>

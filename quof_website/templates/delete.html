@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='/styles/delete.css') }}">
+        <title>Quof - Delete profile</title>
+    </head>
+    <body>
+        <header>
+            <a href="{{ url_for('main.index') }}">
+                <img class="header-logo" width="48" height="48" src="{{ url_for('static', filename='/images/logo.png') }}" alt="logo" />
+            </a>
+        </header>
+
+        <form>
+            <div class="container">
+                <h1>Are you sure you want to delete your profile?</h1>
+                <button onclick="location.href='{{ url_for('auth.immediate_delete') }}'" type="button">Delete</button>
+            </div>
+        </form>
+    </body>
+</html>

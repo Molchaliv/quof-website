@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='/styles/doc_style.css') }}">
+        <title>Quof - Quof Api</title>
+    </head>
+    <body>
+        <header>
+            <a href="{{ url_for('main.index') }}">
+                <img class="header-logo" width="48" height="48" src="{{ url_for('static', filename='/images/logo.png') }}" alt="logo" />
+            </a>
+        </header>
+
+        <form>
+            <div class="container">
+                <h1>Quof Api</h1>
+<p>To interact with the API of our site, you must register on it.
+After registering on the main page, go to the <code>Api</code> tab.
+This page will display your api key.</p>
+<h1>Download Api</h1>
+<p>To download, just send a request to this link:</p>
+<p><code>127.0.0.1:5000/api/&lt;api_key&gt;/download</code></p>
+<p>If you need to download a specific version, add it after the slash.</p>
+<p><code>127.0.0.1:5000/api/&lt;api_key&gt;/download/&lt;version&gt;</code></p>
+<p>For now, that's all! In the future, the API will expand significantly!</p>
+            </div>
+        </form>
+    </body>
+</html>

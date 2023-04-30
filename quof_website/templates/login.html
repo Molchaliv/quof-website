@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='/styles/login.css') }}">
+        <title>Quof - Login</title>
+    </head>
+    <body>
+        <header>
+            <a href="{{ url_for('main.index') }}">
+                <img class="header-logo" width="48" height="48" src="{{ url_for('static', filename='/images/logo.png') }}" alt="logo" />
+            </a>
+        </header>
+
+        <form method="POST" action="/login">
+            <div class="container">
+                <h1>Join and start coding with us!</h1>
+
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="message-container">
+                                <p class="message-text">{{ message }}</p>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+
+                <input type="text" placeholder="Enter Email" name="email" id="email" required/>
+                <input type="password" placeholder="Enter Password" name="password" id="password" required/>
+
+                <button type="submit">Login</button>
+
+                <p>Don't have an account yet? <a href="{{ url_for('auth.signup') }}">Sign up</a>.</p>
+            </div>
+            </form>
+    </body>
+</html>
